@@ -9,7 +9,10 @@
         Hello World!
       </p>
       
-      <CounterButton class="content-box" :maxCount="buttonMaxCount"/>
+      <CounterButton class="content-box" :maxCount="buttonMaxCount" @onGreater="greaterPoint++"/>
+      <p>
+        point: {{greaterPoint}}
+      </p>
 
     </div>
   </div>
@@ -29,9 +32,11 @@ export default defineComponent({
 
   setup(){
     const buttonMaxCount = 5;
+    const greaterPoint = ref(0);
 
     return {
-      buttonMaxCount: buttonMaxCount
+      buttonMaxCount: buttonMaxCount,
+      greaterPoint: greaterPoint,
     }
   }
 })

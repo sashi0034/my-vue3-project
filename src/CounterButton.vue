@@ -24,13 +24,21 @@ export default defineComponent({
   props: {
     maxCount: Number,
   },
+  emits: {
+    onGreater(args: {count: number}){console.log("Become greater.")},
+  },
+
+  methods: {
+    onClick() {
+      this.count++;
+      if (this.count == (this.maxCount as number)){
+        this.$emit("onGreater", {count: this.count});
+      }
+    }
+  },
 
   setup(props){
     const count = ref(0)
-
-    const onClick = () => {
-      count.value++;
-    }
 
     const isGreater = () => {
       return count.value >= (props.maxCount as number);
@@ -42,7 +50,6 @@ export default defineComponent({
 
     return {
       count,
-      onClick,
       isGreater,
       reset,
     }
