@@ -18,12 +18,20 @@ body{
     background-color: #222;
 }
 
-.pad10px, .content-box{
+.link-box{
+    background-color: #eee;
+}
+
+.margin10px{
+    margin: 10px;
+}
+
+.pad10px, .content-box, .link-box {
     padding: 10px;
 
 }
 
-.content-box{
+.content-box, .link-box{
     margin: 10px;
     border-radius: 10px;
 }
