@@ -12,7 +12,7 @@
       <p>point: {{greaterPoint}}</p>
 
       <div class="content-box">
-        <div class="pad10px"><router-link to="/clock" class="link-box">Clock Page</router-link></div>
+        <div class="pad10px" v-if="isRoot()"><router-link to="/clock" class="link-box">Clock Page</router-link></div>
         <router-view/>
       </div>
     </div>
@@ -24,6 +24,7 @@
 
 import { defineComponent, ref } from 'vue';
 import CounterButton from './CounterButton.vue';
+import {useRoute} from "vue-router" 
 
 export default defineComponent({
   name: "App",
@@ -35,10 +36,14 @@ export default defineComponent({
   setup(){
     const buttonMaxCount = 5;
     const greaterPoint = ref(0);
+    const route = useRoute()
+
+    const isRoot = () => route.path==="/"
 
     return {
       buttonMaxCount: buttonMaxCount,
       greaterPoint: greaterPoint,
+      isRoot: isRoot
     }
   }
 })
